@@ -11,8 +11,8 @@ use App\Models\Commande;
 class DatabaseSeeder extends Seeder {
     use WithoutModelEvents;
     public function run(): void {
-        Client::factory()->create();
-        Produit::factory()->create();
-        Commande::factory()->create();
+        Client::factory()->count(50)->create();
+        Produit::factory()->count(200)->create();
+        Commande::factory()->count(100)->create();
     }
 }
