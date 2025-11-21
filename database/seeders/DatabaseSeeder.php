@@ -9,8 +9,10 @@ use App\Models\Produit;
 use App\Models\Commande;
 
 class DatabaseSeeder extends Seeder {
-        use WithoutModelEvents;
-        public function run(): void {
-            Client::factory()->create();
-        }
+    use WithoutModelEvents;
+    public function run(): void {
+        Client::factory()->create();
+        Produit::factory()->create();
+        Commande::factory()->create();
     }
+}

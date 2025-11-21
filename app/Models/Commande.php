@@ -8,16 +8,18 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class Commande
- * 
+ *
  * @property int $id
  * @property int $id_client
  * @property int $id_produit
  * @property int $quantite
  * @property Carbon $date
- * 
+ *
  * @property Client $client
  * @property Produit $produit
  *
@@ -25,6 +27,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Commande extends Model
 {
+    use HasFactory, Notifiable;
+
 	protected $table = 'commandes';
 	public $timestamps = false;
 
