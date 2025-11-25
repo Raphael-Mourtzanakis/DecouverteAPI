@@ -10,3 +10,5 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/produits', [ProduitController::class, "liste"]);
 Route::get('/produit/{id}', [ProduitController::class, "getProduit"]);
+
+Route::post('/addCommande/{idClient}/{idProduit}/{qte}', [CommandeController::class, "addCommande"]);
