@@ -22,6 +22,7 @@ class CommandeController extends Controller {
 
     function addCommandeJSON(Request $request) {
         $commande = new Commande();
+        // nom dans la BDD      nom dans le JSON (avec Postman par exemple)
         $commande->id_client  = $request->json('id_client');
         $commande->id_produit = $request->json('id_produit');
         $commande->quantite   = $request->json('qte');
