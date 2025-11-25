@@ -22,9 +22,9 @@ class CommandeController extends Controller {
 
     function addCommandeJSON(Request $request) {
         $commande = new Commande();
-        $commande->id_client  = $request->get('idClient');
-        $commande->id_produit = $request->get('idProduit');
-        $commande->quantite   = $request->get('qte');
+        $commande->id_client  = $request->json('id_client');
+        $commande->id_produit = $request->json('id_produit');
+        $commande->quantite   = $request->json('qte');
         $commande->date       = now();
         $commande->save();
 
