@@ -10,11 +10,11 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('/produits', [ProduitController::class, "liste"]);
-Route::get('/produit/{id}', [ProduitController::class, "getProduit"]);
+Route::get('/produits', [ProduitController::class, "liste"])->middleware('auth:sanctum');;
+Route::get('/produit/{id}', [ProduitController::class, "getProduit"])->middleware('auth:sanctum');;
 
-Route::get('/ajoutCommande/{idClient}/{idProduit}/{qte}', [CommandeController::class, "addCommande"]);
-Route::post('/ajoutCommande', [CommandeController::class, "addCommandeJSON"]);
+Route::get('/ajoutCommande/{idClient}/{idProduit}/{qte}', [CommandeController::class, "addCommande"])->middleware('auth:sanctum');;
+Route::post('/ajoutCommande', [CommandeController::class, "addCommandeJSON"])->middleware('auth:sanctum');;
 
 Route::post('/auth', [AuthController::class, "auth"]);
 Route::get('/logout', [AuthController::class, "logout"])->middleware('auth:sanctum');
