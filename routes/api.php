@@ -14,7 +14,10 @@ Route::get('/produits', [ProduitController::class, "liste"])->middleware('auth:s
 Route::get('/produit/{id}', [ProduitController::class, "getProduit"])->middleware('auth:sanctum');;
 
 Route::get('/ajoutCommande/{idClient}/{idProduit}/{qte}', [CommandeController::class, "addCommande"])->middleware('auth:sanctum');;
-Route::post('/ajoutCommande', [CommandeController::class, "addCommandeJSON"])->middleware('auth:sanctum');;
+Route::post('/ajoutCommande', [CommandeController::class, "addCommandeJSON"])->middleware('auth:sanctum');
+Route::delete('/suppcommande', [CommandeController::class, "deleteCommande"])->middleware('auth:sanctum');
+Route::get('/commandes/{idClient}', [CommandeController::class, "listCommandes"])->middleware('auth:sanctum');
+Route::post('/commandes', [CommandeController::class, "listCommandesProduits"])->middleware('auth:sanctum');
 
 Route::post('/auth', [AuthController::class, "auth"]);
 Route::get('/logout', [AuthController::class, "logout"])->middleware('auth:sanctum');

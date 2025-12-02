@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produit;
 use Illuminate\Http\Request;
 use App\Models\Commande;
+use App\Models\Client;
 
 class CommandeController extends Controller {
     function addCommande($idClient, $idProduit, $qte) {
@@ -33,5 +35,32 @@ class CommandeController extends Controller {
             'status' => 'Commande créée',
             'data'   => $commande,
         ]);
+    }
+
+    function deleteCommande(Request $request) {
+        $id = $request->json('id');
+        $commande = response()->json(Commande::find($id));
+        Commande::destroy($id);
+
+        if ($id) {
+            return response()->json([
+                'status' => 'Commande supprimée',
+                'data' => $commande,
+            ]);
+        } else {
+            return response()->json([
+                'error' => 'Commande inconnue',
+            ]);
+        }
+    }
+
+    function listCommandes($idClient) {
+        //return response()->json(Commande::all()->where('id_client', $idClient));
+        return response()->json(Client::find($idClient)->commandes()->get());
+    }
+
+    function listCommandesProduits(Request $request) {
+        $idClient = $request->json('id_client');
+        return response()->json(Client::find($idClient)->commandes()->with('produit')->get());
     }
 }
