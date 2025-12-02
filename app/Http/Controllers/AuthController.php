@@ -44,4 +44,8 @@ class AuthController extends Controller
         ]);
     }
 
+    public function unauthorized() {
+        return response()->json(['error' => 'Accès refusé !'], 401);
+    }
+
 }

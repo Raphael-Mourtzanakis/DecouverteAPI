@@ -18,3 +18,4 @@ Route::post('/ajoutCommande', [CommandeController::class, "addCommandeJSON"]);
 
 Route::post('/auth', [AuthController::class, "auth"]);
 Route::get('/logout', [AuthController::class, "logout"])->middleware('auth:sanctum');
+Route::get('/unauthorized', [AuthController::class, "unauthorized"])->name('login');
